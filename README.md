@@ -1,5 +1,5 @@
 # PDSA IITM :sparkles:
-This repository contains the weekly notes and GRPA solutions for the course Programming for Data Science and Analytics (PDSA) at IIT Madras.
+This repository contains the weekly notes and GRPA solutions for the course Programming, Data Structures and Algorithms using Python (PDSA) at IIT Madras.
 
 # Notes
 The notes for each week can be found in the notes folder, organized by week number. The notes are provided in Jupyter notebook format for ease of use.
