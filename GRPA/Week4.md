@@ -52,6 +52,7 @@ print(findConnectionLevel(vertices, Amat, personX, personY))
 ```
 # GRPA 2
 <img width="650" alt="Screenshot 2021-09-23 at 7 33 34 PM" src="https://user-images.githubusercontent.com/94922914/235103845-40235405-e236-4693-96a0-91eab9d2a7ba.png">
+
 ## Solution
 ```python
 from collections import deque
@@ -122,6 +123,7 @@ for i in range(numberOfEdges):
   s = input().split(" ")
   e.append((s[0], s[1]))
 print(findMasterTank(v, e))
+
 ```
 # GRPA 3
 <img width="650" alt="Screenshot 2021-09-23 at 7 33 58 PM" src="https://user-images.githubusercontent.com/94922914/235104146-9203f949-b32a-4d63-bb72-b31331c9ec0c.png">
