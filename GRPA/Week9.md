@@ -1,57 +1,74 @@
 # GRPA 1
-<img src="https://user-images.githubusercontent.com/94922914/235096760-c7681067-d68b-4f82-8303-9afa64ad7414.png" width="650"/>
+<img width="650" src="https://user-images.githubusercontent.com/94922914/235133010-c9dffaf4-e884-44fa-922f-7f6ae646efbd.png"/>
 
 ## Solution
 ```python
-def find_Min_Difference(L,P):
-  L.sort()
-  N = P
-  M = len(L)
-  min_diff = max(L) - min(L)
-  for i in range(M-N+1):
-    if L[i+N-1] - L[i] < min_diff:
-      min_diff = L[i+N-1] - L[i]
-  return min_diff
-L=eval(input().strip())
-P=int(input())
-print(find_Min_Difference(L,P))
+memo = {}
+def constructWord(word, wordList):
+    if word == '':
+        return [[]]
+    if word in memo.keys():
+        return memo[word]
+    totalwordlist = []
+    for subword in wordList:
+        if subword == word[:len(subword)]:
+            subwordList = constructWord(word[len(subword):], wordList)
+            totalwordlist.extend([[subword] + lst for lst in subwordList])
+    memo[word] = totalwordlist
+    return totalwordlist
 ```
 # GRPA 2
-<img width="650" src="https://user-images.githubusercontent.com/94922914/235097289-c8a5d66a-614f-4a3f-8ae1-17852a49fe9a.png">
+<img width="650" src="https://user-images.githubusercontent.com/94922914/235133148-ba8a2260-d1d1-4f03-9154-ce0f6646cfa5.png"/>
 
 ## Solution
 ```python
-def prime(n):
-  if n < 2:
-    return False
-  for i in range(2,n//2+1):
-    if n%i==0:
-      return False
-  return True
-
-def Goldbach(n):
-  Res=[]
-  for i in range((n//2)+1):
-    if prime(i)==True:
-      if prime(n-i)==True:
-        Res.append((i,n-i))
-  return(Res)
-n=int(input())
-print(sorted(Goldbach(n)))
+def MaxCoinPath(M,x1,y1,x2,y2):
+    MCP=[]
+    # Create matrix same size of M and initialized with 0
+    for i in range(len(M)):
+        L = []
+        for j in range(len(M[0])):
+            L.append(0)
+        MCP.append(L)
+    # Initialize x1 row and y1 coloumn    
+    MCP[x1][y1] = M[x1][y1]
+    for i in range(y1+1,len(M[0])):
+        MCP[x1][i]= MCP[x1][i-1] + M[x1][i]
+    for i in range(x1+1,len(M)):
+        MCP[i][y1]= MCP[i-1][y1] + M[i][y1]
+	# calculate value for each cell
+    for i in range(x1+1,len(M)):
+        for j in range(y1+1,len(M[0])):
+            MCP[i][j] = max(MCP[i-1][j],MCP[i][j-1]) + M[i][j]
+    # return max coin value at x2,y2
+    return MCP[x2][y2]
+M = eval(input())
+(x1,y1)=eval(input())
+(x2,y2) = eval(input())
+print(MaxCoinPath(M,x1,y1,x2,y2))
 ```
 # GRPA 3
-<img width="650" alt="T3W1Q3" src="https://user-images.githubusercontent.com/94922914/235097599-be129a03-904e-4a3e-8e4d-33900f980d72.png">
+<img width="650" src="https://user-images.githubusercontent.com/94922914/235133365-1c8dcc72-c588-4647-92b7-02d635103ef6.png"/>
 
 ## Solution
 ```python
-def odd_one(L):
-  P = {}
-  for elem in L:
-    if type(elem) not in P:
-      P[type(elem)] = 0
-    P[type(elem)] += 1
-  for key, value in P.items():
-    if value == 1:
-      return key.__name__
-print(odd_one(eval(input().strip())))
+def LDS(L):
+    n = len(L)
+    LDSCount = [1]*n # LDS with respect to the index
+    prev = [None]*n # previous value with respect to the index
+    for i in range(n):
+        preMax = L[0]
+        for j in range(i):
+            if L[j] > L[i] and LDSCount[j] > preMax:
+                preMax, prev[i] = LDSCount[j], j
+        LDSCount[i] = 1 + preMax # updating LDSCount
+    mx = max(LDSCount) # count of LDS
+    mxi = LDSCount.index(mx) # index of LDS
+
+    # backtracking to get the sequence
+    seq = []
+    while mxi != None:
+        seq.append(L[mxi])
+        mxi = prev[mxi]
+    return seq[::-1]
 ```
