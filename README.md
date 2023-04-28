@@ -5,10 +5,10 @@ This repository contains the weekly notes and GRPA solutions for the course Prog
 The notes for each week can be found in the notes folder, organized by week number. The notes are provided in Jupyter notebook format for ease of use.
 
 # GRPA Solutions
-The solutions to all the GRPAs can be found in the grpas folder, organized by week number. The solutions are provided in Python format.
+The solutions to all the GRPAs can be found in the GRPA folder, organized by week number.
 
 # Live Coding Solutions
-The solutions to the live coding sessions can be found in the live_coding_solutions folder, organized by week number. The solutions are provided in Python format.
+The solutions to the live coding sessions can be found in the live_coding_solutions folder, organized by week number.
 
 # How to Use this Repository
 - Clone the repository to your local machine using the command:
