@@ -1,57 +1,79 @@
 # GRPA 1
-<img src="https://user-images.githubusercontent.com/94922914/235096760-c7681067-d68b-4f82-8303-9afa64ad7414.png" width="650"/>
+<img src="https://user-images.githubusercontent.com/94922914/235100823-8d06d263-c88e-49b4-9dba-4f2bf424ae71.png" width="650"/>
 
 ## Solution
 ```python
-def find_Min_Difference(L,P):
-  L.sort()
-  N = P
-  M = len(L)
-  min_diff = max(L) - min(L)
-  for i in range(M-N+1):
-    if L[i+N-1] - L[i] < min_diff:
-      min_diff = L[i+N-1] - L[i]
-  return min_diff
-L=eval(input().strip())
-P=int(input())
-print(find_Min_Difference(L,P))
+def insertionsort(L): #use this because it is stable sort
+    n = len(L)
+    if n < 1:
+        return(L)
+    for i in range(n):
+        j = i
+        while(j > 0 and L[j][1] > L[j-1][1]):
+            (L[j],L[j-1]) = (L[j-1],L[j])
+            j = j-1
+    return(L)
+
+def DishPrepareOrder(order_list):
+    order_count = {}
+    R = []
+    for order in order_list:
+        if order in order_count:
+            order_count[order] += 1
+        else:
+            order_count[order] = 1
+    for ID in sorted(order_count.keys()):
+        R.append((ID,order_count[ID]))
+    R=insertionsort(R)
+    Res = []
+    for tup in R:
+        Res.append(tup[0])
+    return Res
+nums = eval(input())
+print(DishPrepareOrder(nums))
 ```
 # GRPA 2
-<img width="650" src="https://user-images.githubusercontent.com/94922914/235097289-c8a5d66a-614f-4a3f-8ae1-17852a49fe9a.png">
+<img width="650" src="https://user-images.githubusercontent.com/94922914/235101021-7fd51202-f518-439a-aed3-e9d6de8586f7.png">
 
 ## Solution
 ```python
-def prime(n):
-  if n < 2:
-    return False
-  for i in range(2,n//2+1):
-    if n%i==0:
-      return False
-  return True
+class create_stack:
+  def __init__(self):
+    self.stack = []
+  def push(self,d):
+    self.stack += [d]
+  def pop(self):
+    t = self.stack[-1]
+    self.stack = self.stack[:-1]
+    return t
 
-def Goldbach(n):
-  Res=[]
-  for i in range((n//2)+1):
-    if prime(i)==True:
-      if prime(n-i)==True:
-        Res.append((i,n-i))
-  return(Res)
-n=int(input())
-print(sorted(Goldbach(n)))
+def EvaluateExpression(exp):
+  opt = ['+','-','*','/','**']
+  stk = create_stack()
+  L = exp.split(' ')
+  for i in L:
+    if i not in opt:
+      stk.push(i)
+    else:
+      b = stk.pop()
+      a = stk.pop()
+      res = eval(a + i + b)
+      stk.push(str(res))
+  return stk.pop()
+print(float(EvaluateExpression(input())))
 ```
 # GRPA 3
-<img width="650" alt="T3W1Q3" src="https://user-images.githubusercontent.com/94922914/235097599-be129a03-904e-4a3e-8e4d-33900f980d72.png">
+<img width="650" src="https://user-images.githubusercontent.com/94922914/235103291-d7e50517-75c0-427c-9550-0b896daac273.png">
 
 ## Solution
 ```python
-def odd_one(L):
-  P = {}
-  for elem in L:
-    if type(elem) not in P:
-      P[type(elem)] = 0
-    P[type(elem)] += 1
-  for key, value in P.items():
-    if value == 1:
-      return key.__name__
-print(odd_one(eval(input().strip())))
+def reverse(root):
+  if (root.isEmpty()):
+    return root
+  temp = root
+  prev = None
+  while (temp):
+    next, temp.next = temp.next, prev
+    prev, temp = temp, next
+  return prev
 ```
