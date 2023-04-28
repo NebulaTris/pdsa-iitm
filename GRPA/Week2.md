@@ -1,57 +1,94 @@
 # GRPA 1
-<img src="https://user-images.githubusercontent.com/94922914/235096760-c7681067-d68b-4f82-8303-9afa64ad7414.png" width="650"/>
+<img src="https://user-images.githubusercontent.com/94922914/235100012-42864a30-a772-4c6a-a69c-e815f5b7d141.png" width="650"/>
 
 ## Solution
 ```python
-def find_Min_Difference(L,P):
-  L.sort()
-  N = P
-  M = len(L)
-  min_diff = max(L) - min(L)
-  for i in range(M-N+1):
-    if L[i+N-1] - L[i] < min_diff:
-      min_diff = L[i+N-1] - L[i]
-  return min_diff
-L=eval(input().strip())
-P=int(input())
-print(find_Min_Difference(L,P))
+#python
+import string
+def combinationSort(strList):
+  # Create a dictionary with 26 keys from characters 'a' to 'z', each key has an empty list as value.
+  groups = {k: [] for k in string.ascii_lowercase}
+
+  # Using this dictionary to group strings with same initial character.  
+  for i in range(len(strList)):
+    char=strList[i][0]
+    groups[char].append(strList[i])
+  
+  strList=[]
+  # Recreate the list from all the strings in groups, iterating on groups from a to z.
+  for char in groups.keys():
+    for s in groups[char]:
+      strList.append(s)
+  
+  L1 = strList.copy() # Saving intermediate result to return later.
+  i = 1
+  left = 0
+  # As there can be no more than 100 strings with same initial character.
+  # Using insertion sort within group.
+  while i<len(strList):
+    right = i
+    while(right>left and strList[right][0] == strList[right-1][0] and int(strList[right-1][1:])<int(strList[right][1:])):
+      strList[right], strList[right-1] = strList[right-1], strList[right]
+      right -= 1
+    i += 1
+  
+  return L1, strList
 ```
 # GRPA 2
-<img width="650" src="https://user-images.githubusercontent.com/94922914/235097289-c8a5d66a-614f-4a3f-8ae1-17852a49fe9a.png">
+<img width="650" src="https://user-images.githubusercontent.com/94922914/235100272-538b21d0-7a57-4e47-b8c6-565e445354eb.png">
 
 ## Solution
 ```python
-def prime(n):
-  if n < 2:
-    return False
-  for i in range(2,n//2+1):
-    if n%i==0:
-      return False
-  return True
+#python
+def findLargest(L):
+  left = 0
+  s = len(L)
+  right = s-1
+  
+  # If list has only one element, that is the max.
+  if (s==1):
+    return L[0]
+    
+  while (left<=right):
+    mid=(left+right)//2
+    
+    # if mid is at last index, next element to compare will be at index 0
+    if (mid == s-1):
+      nextToMid = 0
+    else:
+      nextToMid = mid+1
 
-def Goldbach(n):
-  Res=[]
-  for i in range((n//2)+1):
-    if prime(i)==True:
-      if prime(n-i)==True:
-        Res.append((i,n-i))
-  return(Res)
-n=int(input())
-print(sorted(Goldbach(n)))
+    if (L[mid] > L[nextToMid]):
+      return L[mid]
+    elif (L[mid] < L[0]):
+      # our element is in left of mid
+      right = mid-1
+    else:
+      # our element is in right of mid
+      left = mid+1
 ```
 # GRPA 3
-<img width="650" alt="T3W1Q3" src="https://user-images.githubusercontent.com/94922914/235097599-be129a03-904e-4a3e-8e4d-33900f980d72.png">
+<img width="650" src="https://user-images.githubusercontent.com/94922914/235100457-924cd784-ee7c-442b-819f-09e8d0af089a.png"/>
 
 ## Solution
 ```python
-def odd_one(L):
-  P = {}
-  for elem in L:
-    if type(elem) not in P:
-      P[type(elem)] = 0
-    P[type(elem)] += 1
-  for key, value in P.items():
-    if value == 1:
-      return key.__name__
-print(odd_one(eval(input().strip())))
+#python
+def mergeInPlace(A, B):
+  m = len(A)
+  n = len(B)
+  if (m < 1 or n < 1):
+    return 
+  
+  # Find the smaller list of A and B.
+  for i in range(0, m):
+    # A and B are already sorted. B[0] will always be least in B, 
+    # as we will maintain its sortedness .
+    if (A[i] > B[0]):
+      A.swap(i, B, 0)
+       
+      # move `B[0]` to its correct position in B to maintain the sortedness of B
+      j = 0
+      while(j < n - 1 and B[j] > B[j + 1]):
+        B.swap(j+1, B, j)        
+        j += 1
 ```
