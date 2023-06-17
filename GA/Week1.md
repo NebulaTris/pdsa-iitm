@@ -123,7 +123,7 @@ def isSymmetricBad(L):
     print('No exception occurred')
 isSymmetricBad(L)
  ```
-Given above is a function that checks whether a list is a palindrome. There is an error in this function. Select the list(s) L =[n1,n2,....,n2,n1], for which isSymmetricBad(L) produces an IndexError exception. [MSQ]
+Given above is a function that checks whether a list is a palindrome. There is an error in this function. Select the list(s) L =[n1,n2,....,n2,n1], for which isSymmetricBad(L) produces an IndexError exception.[MSQ]
  </br></br>
 A8)
 - [x] L =[1,2,3,4,3,2,1]
