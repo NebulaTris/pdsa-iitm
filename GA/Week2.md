@@ -8,7 +8,7 @@ def fun(n):
     for j in range(0, n):
       for k in range(0, n):
         s += 1
-  for i in range(o, n):
+  for i in range(0, n):
     for j in range(0, n):
       s -= 1
   for i in range(0, n):
