@@ -40,7 +40,7 @@ ________________________________________________________________________________
 Q6)
 Which of the following graph can be sorted using topological sort?
  </br></br>
-A6)
+A6)</br>
 ![W4G6 d](https://github.com/NebulaTris/pdsa-iitm/assets/94922914/ebccb982-ebf5-47b6-8c79-054b746bf95b)
 
 __________________________________________________________________________________________________________________________
@@ -69,7 +69,7 @@ I is true, II is false.
 __________________________________________________________________________________________________________________________
 Q10)
 An undirected graph G has 17 vertices. The sum of the degrees of all the vertices in G is D. The number of vertices of even degree in G is K, Which of these values are possible for D and K?
-</br>
+</br></br>
 A10)
 D = 42, K = 9
 __________________________________________________________________________________________________________________________
