@@ -10,6 +10,9 @@ The solutions to all the GAs can be found in the GA folder, organized by week nu
 # GRPA Solutions
 The solutions to all the GRPAs can be found in the GRPA folder, organized by week number.
 
+# PA Solutions
+The solutions to all the Practice Assignments can be found in the PA folder, organized by week number.
+
 # Live Coding Solutions
 The solutions to the live coding sessions can be found in the live_coding_solutions folder, organized by week number.
 
