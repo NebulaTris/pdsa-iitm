@@ -6,7 +6,7 @@ Which of the following input arrays will have maximum and minimum inversion pair
 
 I. Array sorted in ascending order.<br>
 II. Array sorted in descending order.<br>
-A1) O(kN)
+A1) II and I
 __________________________________________________________________________________________________________________________
 <b>Question 2 & 3</b><br>
 
@@ -18,14 +18,14 @@ Q2)
 What will be the nearest upper bound for the above algorithm?
 <br>
 A2)
-min
+O(nlogn)
 
 __________________________________________________________________________________________________________________________
 Q3)
 If we divide the problem into 4 sub-problems of size n/2 and number of steps required to combine the solutions is 15 using some optimizations, what will be the nearest upper bound of this algorithm?
 <br>
 A3)
-max
+O(n<sup>2</sup>)
 
 __________________________________________________________________________________________________________________________
 <b>Question 4 & 5</b><br>
@@ -35,12 +35,12 @@ Q4)
 Which of the following options describe the recurrence relation that will give the above recurrence tree, if the cost to combine solutions at each level is equal to 2n and the cost to compute the solution of sub-problem at leaf nodes is Θ(1)?
 <br>
 A4)
-- [x] O(h)
-- [x] O(logn)
+- [x] T(n) = T(n/3) + T(2n/3) + 2n
+- [x] T(n) = T(n/3) + T(2n/3) + O(n)
 
 __________________________________________________________________________________________________________________________
 Q5)
 If O(f(n)) is the upper bound for the above recurrence relation. What is the value of f(n).
 <br>
 A5)
-min
+nlogn
