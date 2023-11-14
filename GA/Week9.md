@@ -1,108 +1,132 @@
 # Graded Assignment 9
 
 Q1)
-Consider a list L with k distinct numbers and a heap H with size n. What is the nearest upper bound for checking if every number in L is present in the heap H?<br><br>
-A1) O(kN)
-__________________________________________________________________________________________________________________________
-<b>Use the below information for the Questions 2 to 7</b><br></br>
-
-Identify the below arrays as min heap, max heap or none. Type min if it is a min heap, max if it is a max heap, none otherwise.
+Consider product of three matrices A, B and C having size p X q, q X r and r X s respectively. Which of the following statements is/are true?<br><br>
+A1) 
+- [x] Computing (AB)C and A(BC) both take eqaul time if p=q=r=s.
+- [x] If (1/q + 1/s) < (1/p + 1/r) then (AB)C takes less time than A(BC)
+- [x] (AB)C takes pr(q+s) steps to compute
 __________________________________________________________________________________________________________________________
 Q2) 
-| 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |
-|---|---|---|---|---|---|---|---|
+Consider four matrices M1,M2,M3 and M4 of dimension p X q, q X r, r X s, and s X t respectively, where p,q,r and s are distinct values. IN How many ways can we evaluate the product of M1,M2,M3,and M4 if each step consist of multiplying two matrices?
 <br>
 A2)
-min
+5
 
 __________________________________________________________________________________________________________________________
 Q3)
-| 67 | 65 | 43 | 54 | 6 | 2 | 1 | 19 | 5 |
-|----|----|----|----|---|---|---|----|---|
+Consider the following function f(seq) , where seq is a list of integers.
+```python
+def f(seq):
+    n = len(seq)
+    L= [0]*(n-1)+[1]
+    for i in range(n-2,-1,-1):
+        if seq[i]<seq[i+1]:
+           L[i]=1+L[i+1]
+        else:
+           L[i] = 1
+    return(max(L))
+```
+Which of the following statements is/are true?
 <br>
 A3)
-max
+- [x] The function returns the length of the longest continguous increasing sequence of numbers in the list.
+- [x] The function takes O(n) to return the output.
+- [x] The algorithm uses the dyanmic programming paradigm.
 
 __________________________________________________________________________________________________________________________
 Q4)
-| 88 | 77 | 66 | 55 | 44 | 33 | 22 | 11 |
-|----|----|----|----|----|----|----|----|
+Which of the following statements is/are true about the edit distance problem?
 <br>
 A4)
-max
+- [x] It can be solved using dynamic programming method.
+- [x] The edit distance will be zero only when the two strings are equal.
+- [x] The maximum edit distance between the two strings is equal to the length of the larger string.
 
 __________________________________________________________________________________________________________________________
 Q5)
-| 1 | 2 | 3 | 4 | 8 | 5 | 6 | 7 |
-|---|---|---|---|---|---|---|---|
+What is the length of the longest common subsequence of strings ABCBDABACD and BDCABADCD?
 <br>
 A5)
-min
+7
 
 __________________________________________________________________________________________________________________________
 Q6)
-| 4 | 1 | 2 | 3 | 5 | 6 | 7 | 8 |
-|---|---|---|---|---|---|---|---|
+Consider the following grid.<br>
+(0,0)
+
+|  . |   |   |   |   |
+|---|---|---|---|---|
+|   |   |   |   |   |
+|   |   |   |   |   |
+|   |   |   |   |   |
+|   |   |   |   |   |
+|   |   |   |   |   |
+|   |   |   |   |   |
+|   |   |   |   |   |
+|   |   |   |   |   |
+|   |   |   |   | .  |
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(5,10)
 <br>
+How many unique paths are available from (0,0) to (5,10) ? One condition is that you can only travel one step right or two-step down at a time.
 A6)
-none
+252
 
 __________________________________________________________________________________________________________________________
 Q7)
-Which of the following will correctly represent the max-heap, after inserting elements 1, 2, 3, 5, 7, 6 and 4 in the given order, starting with an empty heap?
-</br></br>
+The number n is to be created by adding the elements(one element can be used more than one time) of a list of positive integers L of length m.
+```python
+def nsum(n, L):
+    if n == 0:
+        return []
+    if n < 0:
+        return None
+    for i in L:
+       x = nsum(n-i, L)
+       if x != None:
+           return x+[i]
+    return None
+```
+What will be the asymptotic complexity of the above recursive function without and with memoization respectively?
+</br>
 A7)
-| 7 | 5 | 6 | 1 | 3 | 2 | 4 |
-|---|---|---|---|---|---|---|
+O(m<sup>n</sup>), O(mn)
 
+__________________________________________________________________________________________________________________________
+<b> Questions 8 to 10 are based on the common theme</b><br>
+<p> The subset sum problem is defined as follows. Given a list L of n non-negative integers and a value k, determine if there is a subset of elements from the list L whose sum is equal to k. Consider the following solution code where T is a 2-dimensional Boolean array, with n+1 rows and k+1 columns. T[i][j], 1 <= i <= n, 1 <= j <= k is True, if and only if there is a subset of {a1,a2,....,ai} whose sum is equal to j.</p>
+ 
+```python
+def subsetSum(L,k):
+    n = len(L)
+    T = [[False for x in range(k+1)] for y in range(n+1)]
+    for i in range(n+1):
+        T[i][0] = True
+    for i in range(1, n+1):
+        for j in range(1,k+1):
+            if L[i-1]>j:
+                T[i][j] = T[i-1][j]
+            else:
+                T[i][j] = T[i-1][j] or T[i-1][j - L[i - 1]]
+    return ____
+ ```
 __________________________________________________________________________________________________________________________
 Q8)
-What is the nearest worst case upper bound to search for an element in a heap and in a binary search tree, respectively? Consider that the total number of elements are 
-n and the binary search tree is balanced(in the form of a complete binary tree).
- </br></br>
-A8)
-O(n), O(logn)
-__________________________________________________________________________________________________________________________
-Q9)<br>
-![W6GA5](https://github.com/NebulaTris/pdsa-iitm/assets/94922914/647b3c51-146f-4a42-9255-5440957a52a7)<br><br>
-Above code is an incorrect implementation of max_heap. Which of the following lines of code if replaced for the given line numbers will correct the above code?
-</br><br>
-A9)<br>
-![W6GA5 a](https://github.com/NebulaTris/pdsa-iitm/assets/94922914/bf083f82-5b3a-4344-b2b7-b86e29fd2c8b)
+In the given code, which entry of T should be returned ? If True, it implies that there is a subset of elements whose sum is equal to k.
+</br>
+A8)<br>
+T[n][k]
 
+__________________________________________________________________________________________________________________________
+Q9)
+Function subsetSum() is an example of :
+</br>
+A9)
+A dynamic programming algorithm
 __________________________________________________________________________________________________________________________
 Q10)
-Consider a max heap, represented as the array, | 40 | 30 | 18 | 20 | 15 | 16 | 17 | 10 | 4 |. Now consider that a value 25 is inserted into this heap. After insertion, the new heap will be
-</br></br>
+What is the time complexity of function subsetSum() ?
+</br>
 A10)
-| 40 | 30 | 18 | 20 | 25 | 16 | 17 | 10 | 4 | 15 |
-|----|----|----|----|----|----|----|----|---|----|
-
-__________________________________________________________________________________________________________________________
-Q11)
-Pre-Order traversal of binary search tree is 15,10,12,11,20,18,16,19. Which one of the following is the post-order traversal of the binary search tree?
- </br></br>
-A11)
-11,12,10,16,19,18,20,15
-__________________________________________________________________________________________________________________________
-Q12)
-What form of tree traversal does the function traverse(root) implement, where root is the root node of a binary search tree?
- </br>
- ![W6GA8](https://github.com/NebulaTris/pdsa-iitm/assets/94922914/c83730d4-9980-42e5-b1cc-b5c0837fc635)
- </br></br>
-A12)
-Post-order
-__________________________________________________________________________________________________________________________
-Q13)
-Consider a max-heap H with n elements and ℎ height. What is the nearest upper bound to remove the maximum element from max-heap H? [MSQ]
- </br></br>
-A13)
-- [x] O(h)
-- [x] O(logn)
-__________________________________________________________________________________________________________________________
-Q14)The given code implements a priority queue using a sorted list. Which of the following is the correct implementation of delete_max operation of an element from the priority queue? Note that the higher the number, the higher it's priority ?
- </br>
-A14)</br>
-![W6GA10 c](https://github.com/NebulaTris/pdsa-iitm/assets/94922914/a78a5520-d16c-42e7-b614-d570222ca585)
-
-__________________________________________________________________________________________________________________________
+O(nk)
