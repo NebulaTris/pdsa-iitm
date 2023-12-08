@@ -1,108 +1,58 @@
 # Graded Assignment 10
 
 Q1)
-Consider a list L with k distinct numbers and a heap H with size n. What is the nearest upper bound for checking if every number in L is present in the heap H?<br><br>
-A1) O(kN)
-__________________________________________________________________________________________________________________________
-<b>Use the below information for the Questions 2 to 7</b><br></br>
-
-Identify the below arrays as min heap, max heap or none. Type min if it is a min heap, max if it is a max heap, none otherwise.
+Which of the following option represents the fail function (or prefix function) for pattern ABABACA in Knuth-Morris-Pratt (KMP) algorithm? <br>
+A1) [0, 0, 1, 2, 3, 0, 1]
 __________________________________________________________________________________________________________________________
 Q2) 
-| 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |
-|---|---|---|---|---|---|---|---|
+For searching the pattern **aaab** by Brute force algorithm on which of the following text will result in worst case behavior?
 <br>
-A2)
-min
-
+A2) aaaaaaaaaaaa
 __________________________________________________________________________________________________________________________
 Q3)
-| 67 | 65 | 43 | 54 | 6 | 2 | 1 | 19 | 5 |
-|----|----|----|----|---|---|---|----|---|
+We want to search a pattern in the text using Boyer-Moore skipping heuristic. For which of the following patterns the last dictionary (as discussed in the lectures) will be the biggest in size?
 <br>
-A3)
-max
-
+A3) hypothetic
 __________________________________________________________________________________________________________________________
 Q4)
-| 88 | 77 | 66 | 55 | 44 | 33 | 22 | 11 |
-|----|----|----|----|----|----|----|----|
+Which of the following is True with respect to the Rabin-Karp string matching algorithm?
 <br>
 A4)
-max
-
+- [x] If the hash value of a substring of the text matches that of the pattern, then we have to match the actual substring to the pattern to guarantee that the pattern has been found.
+- [x] Rabin Karp algorithm and brute force pattern searching algorithm have the same worst case time complexity.
+- [x] Rabin Karp algorithm and Boyer Moore pattern searching algorithm have the same worst case time complexity
 __________________________________________________________________________________________________________________________
 Q5)
-| 1 | 2 | 3 | 4 | 8 | 5 | 6 | 7 |
-|---|---|---|---|---|---|---|---|
+Consider the Rabin-Karp algorithm using modulo arithmetic to match pattern in base 10 . Taking modulo q=11 , how many **false positives** matches does the Rabin-Karp matcher encounter while searching pattern 36 in the text 591464256 ?
 <br>
-A5)
-min
-
+A5) 3
 __________________________________________________________________________________________________________________________
-Q6)
-| 4 | 1 | 2 | 3 | 5 | 6 | 7 | 8 |
-|---|---|---|---|---|---|---|---|
+Q6)We want to search the pattern **strawberry** in the text **straw plus berry is strawberry** what is the count of character comparisons using Boyer-Moore skipping heuristic and Brute force pattern matching respectively?
 <br>
 A6)
-none
+14, 37
 
 __________________________________________________________________________________________________________________________
 Q7)
-Which of the following will correctly represent the max-heap, after inserting elements 1, 2, 3, 5, 7, 6 and 4 in the given order, starting with an empty heap?
-</br></br>
-A7)
-| 7 | 5 | 6 | 1 | 3 | 2 | 4 |
-|---|---|---|---|---|---|---|
+Which of the following combination of input text T and pattern P will exhibit the worst case running time behavior for Boyer-Moore skipping heuristic?</br>
+A7) T = 'aaaaaaaaaaaaaaa' and P = 'baa'
 
 __________________________________________________________________________________________________________________________
 Q8)
-What is the nearest worst case upper bound to search for an element in a heap and in a binary search tree, respectively? Consider that the total number of elements are 
-n and the binary search tree is balanced(in the form of a complete binary tree).
- </br></br>
+Consider the following finite automaton where q0 is the starting state and q2 is the final or accepting state , and input symbols are ∑ = {a, b, c}.
+ </br>![W10G9](https://github.com/NebulaTris/pdsa-iitm/assets/94922914/29d585cb-337b-44ea-a1e7-4e4b5a1b6d87)
+</br>
+Which of the following string(s) will be accepted by the given finite automaton?</br>
 A8)
-O(n), O(logn)
+- [x] aaaaaaaa
+- [x] aabbaabccbaab
+- [x] bcbcabcbcabcbcaa
 __________________________________________________________________________________________________________________________
-Q9)<br>
-![W6GA5](https://github.com/NebulaTris/pdsa-iitm/assets/94922914/647b3c51-146f-4a42-9255-5440957a52a7)<br><br>
-Above code is an incorrect implementation of max_heap. Which of the following lines of code if replaced for the given line numbers will correct the above code?
-</br><br>
-A9)<br>
-![W6GA5 a](https://github.com/NebulaTris/pdsa-iitm/assets/94922914/bf083f82-5b3a-4344-b2b7-b86e29fd2c8b)
-
-__________________________________________________________________________________________________________________________
-Q10)
-Consider a max heap, represented as the array, | 40 | 30 | 18 | 20 | 15 | 16 | 17 | 10 | 4 |. Now consider that a value 25 is inserted into this heap. After insertion, the new heap will be
-</br></br>
-A10)
-| 40 | 30 | 18 | 20 | 25 | 16 | 17 | 10 | 4 | 15 |
-|----|----|----|----|----|----|----|----|---|----|
-
-__________________________________________________________________________________________________________________________
-Q11)
-Pre-Order traversal of binary search tree is 15,10,12,11,20,18,16,19. Which one of the following is the post-order traversal of the binary search tree?
- </br></br>
-A11)
-11,12,10,16,19,18,20,15
-__________________________________________________________________________________________________________________________
-Q12)
-What form of tree traversal does the function traverse(root) implement, where root is the root node of a binary search tree?
- </br>
- ![W6GA8](https://github.com/NebulaTris/pdsa-iitm/assets/94922914/c83730d4-9980-42e5-b1cc-b5c0837fc635)
- </br></br>
-A12)
-Post-order
-__________________________________________________________________________________________________________________________
-Q13)
-Consider a max-heap H with n elements and ℎ height. What is the nearest upper bound to remove the maximum element from max-heap H? [MSQ]
- </br></br>
-A13)
-- [x] O(h)
-- [x] O(logn)
-__________________________________________________________________________________________________________________________
-Q14)The given code implements a priority queue using a sorted list. Which of the following is the correct implementation of delete_max operation of an element from the priority queue? Note that the higher the number, the higher it's priority ?
- </br>
-A14)</br>
-![W6GA10 c](https://github.com/NebulaTris/pdsa-iitm/assets/94922914/a78a5520-d16c-42e7-b614-d570222ca585)
+Q9)Which of the following string(s) match the pattern ^ab(ba)*cd$?
+</br>
+A9)
+- [x] abbacd
+- [x] abcd
+- [x] abbabababacd
 
 __________________________________________________________________________________________________________________________
